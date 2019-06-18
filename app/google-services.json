@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "333920503870",
+    "firebase_url": "https://finalmealproject.firebaseio.com",
+    "project_id": "finalmealproject",
+    "storage_bucket": "finalmealproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333920503870:android:312f59a113cbd090",
+        "android_client_info": {
+          "package_name": "com.example.sahabub.finalmealproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333920503870-1qa5bkuc41o952mslgicd60j7ar0ovib.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sahabub.finalmealproject",
+            "certificate_hash": "f34428d6bf208c066bca905e432e67cc3ee6d524"
+          }
+        },
+        {
+          "client_id": "333920503870-535bavfgeoevkudcph7tculg5druiubv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_AkbgPs9P7GcS2rZC5An0I020xHExE9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333920503870-535bavfgeoevkudcph7tculg5druiubv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
