@@ -1,5 +1,6 @@
 package com.example.sahabub.finalmealproject;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,8 +15,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class StudentActivity extends AppCompatActivity {
     
-    private EditText requestedbyEditText,rollEditText,dateTimeEditText,lunchEditText,dinnerEditText;
-    private Button sendButton,viewButton;
+    private EditText requestedbyEditText,rollEditText,dateTimeEditText,lunchEditText,dinnerEditText,studentcostEditText;
+    private Button sendButton,totalcostButton;
     DatabaseReference databaseReference;
     DatabaseReference databaseReference2;
     FirebaseAuth auth;
@@ -35,9 +36,32 @@ public class StudentActivity extends AppCompatActivity {
 
         lunchEditText =(EditText) findViewById(R.id.lunchId);
         dinnerEditText =(EditText) findViewById(R.id.dinnerId);
+        studentcostEditText = (EditText)findViewById(R.id.studentCostId);
         
         sendButton =(Button) findViewById(R.id.sendId);
-        viewButton =(Button) findViewById(R.id.ViewId);
+        totalcostButton =(Button) findViewById(R.id.totalcostId);
+
+        totalcostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String roll = studentcostEditText.getText().toString();
+                Toast.makeText(StudentActivity.this, ""+roll, Toast.LENGTH_SHORT).show();
+                try{
+                    Intent intent = new Intent(StudentActivity.this,MealActivity.class);
+                    intent.putExtra("SendMealRollNumber",roll);
+
+                    int f= 1;
+                    String flag = Integer.toString(f);
+                    intent.putExtra("sendFlag",flag);
+                    Toast.makeText(StudentActivity.this, "flag: "+flag, Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+
+                }catch (Exception e){
+                    Toast.makeText(StudentActivity.this, ""+e, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override

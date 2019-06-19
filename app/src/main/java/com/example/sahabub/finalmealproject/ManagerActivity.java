@@ -31,14 +31,18 @@ public class ManagerActivity extends AppCompatActivity implements View.OnClickLi
             String roll = seeMealRoll.getText().toString();
                 try{
                     Intent intent = new Intent(ManagerActivity.this,MealActivity.class);
+
+                    int f= 2;
+                    String flag = Integer.toString(f);
+                    intent.putExtra("sendFlag",flag);
+                    Toast.makeText(this, "Manager: "+flag, Toast.LENGTH_SHORT).show();
+
                     intent.putExtra("SendMealRollNumber",roll);
                     startActivity(intent);
 
                 }catch (Exception e){
                     Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
                 }
-
-
 
             }
 
