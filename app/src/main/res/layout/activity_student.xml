@@ -169,20 +169,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/sendId"
-            android:text="Total Cost"
+            android:text="Total Meal"
             android:textStyle="bold"
             android:textSize="20sp"
             android:textAllCaps="false"
-            android:id="@+id/totalcostId"
+            android:id="@+id/totalMeal_Id"
             />
+
         <EditText
-            android:id="@+id/studentCostId"
+            android:id="@+id/inputRoll_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter roll"
+            android:hint="Enter your roll"
             android:inputType="number"
-            android:textSize="20dp"
-            />
+            android:textSize="20dp" />
     </LinearLayout>
 
 

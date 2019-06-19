@@ -15,8 +15,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class StudentActivity extends AppCompatActivity {
     
-    private EditText requestedbyEditText,rollEditText,dateTimeEditText,lunchEditText,dinnerEditText,studentcostEditText;
-    private Button sendButton,totalcostButton;
+    private EditText requestedbyEditText,rollEditText,dateTimeEditText,lunchEditText,dinnerEditText,inputRollEditText;
+    private Button sendButton,totalMealButton;
     DatabaseReference databaseReference;
     DatabaseReference databaseReference2;
     FirebaseAuth auth;
@@ -36,28 +36,32 @@ public class StudentActivity extends AppCompatActivity {
 
         lunchEditText =(EditText) findViewById(R.id.lunchId);
         dinnerEditText =(EditText) findViewById(R.id.dinnerId);
-        studentcostEditText = (EditText)findViewById(R.id.studentCostId);
+        inputRollEditText = (EditText)findViewById(R.id.inputRoll_id);
         
         sendButton =(Button) findViewById(R.id.sendId);
-        totalcostButton =(Button) findViewById(R.id.totalcostId);
+        totalMealButton =(Button) findViewById(R.id.totalMeal_Id);
 
-        totalcostButton.setOnClickListener(new View.OnClickListener() {
+        totalMealButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String roll = studentcostEditText.getText().toString();
-                Toast.makeText(StudentActivity.this, ""+roll, Toast.LENGTH_SHORT).show();
-                try{
-                    Intent intent = new Intent(StudentActivity.this,MealActivity.class);
-                    intent.putExtra("SendMealRollNumber",roll);
+                String roll = inputRollEditText.getText().toString();
+                if(roll.equals("")){
+                    Toast.makeText(StudentActivity.this, "Roll empty!", Toast.LENGTH_SHORT).show();
+                }else{
+                    //  Toast.makeText(StudentActivity.this, ""+roll, Toast.LENGTH_SHORT).show();
+                    try{
+                        Intent intent = new Intent(StudentActivity.this,MealActivity.class);
+                        intent.putExtra("SendMealRollNumber",roll);
 
-                    int f= 1;
-                    String flag = Integer.toString(f);
-                    intent.putExtra("sendFlag",flag);
-                    Toast.makeText(StudentActivity.this, "flag: "+flag, Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
+                        int f= 1;
+                        String flag = Integer.toString(f);
+                        intent.putExtra("sendFlag",flag);
+                        // Toast.makeText(StudentActivity.this, "flag: "+flag, Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
 
-                }catch (Exception e){
-                    Toast.makeText(StudentActivity.this, ""+e, Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(StudentActivity.this, ""+e, Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
@@ -78,13 +82,18 @@ public class StudentActivity extends AppCompatActivity {
          String lunch = lunchEditText.getText().toString().trim();
          String dinner = dinnerEditText.getText().toString().trim();
 
-         String key = databaseReference.push().getKey();
-         Meal meal = new Meal(requestby,roll,date, lunch, dinner);
-         // for meal table data input.............................
-         databaseReference.child(roll).push().setValue(meal);
-         // for all meal table data input..........................
-         databaseReference2.push().setValue(meal);
-         Toast.makeText(getApplicationContext(), "your meal is on", Toast.LENGTH_SHORT).show();
+         if(requestby.equals("") || roll.equals("") || date.equals("") || lunch.equals("") || dinner.equals("")){
+             Toast.makeText(getApplicationContext(), "Please insert all field data!", Toast.LENGTH_SHORT).show();
+         }else{
+             String key = databaseReference.push().getKey();
+             Meal meal = new Meal(requestby,roll,date, lunch, dinner);
+             // for meal table data input.............................
+             databaseReference.child(roll).push().setValue(meal);
+             // for all meal table data input..........................
+             databaseReference2.push().setValue(meal);
+
+             Toast.makeText(getApplicationContext(), "your meal successfully ON", Toast.LENGTH_SHORT).show();
+         }
      }
 
 

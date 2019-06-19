@@ -35,7 +35,7 @@ public class ManagerActivity extends AppCompatActivity implements View.OnClickLi
                     int f= 2;
                     String flag = Integer.toString(f);
                     intent.putExtra("sendFlag",flag);
-                    Toast.makeText(this, "Manager: "+flag, Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(this, "Manager: "+flag, Toast.LENGTH_SHORT).show();
 
                     intent.putExtra("SendMealRollNumber",roll);
                     startActivity(intent);
